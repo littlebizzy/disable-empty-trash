@@ -1,6 +1,7 @@
 === Disable Empty Trash ===
 
 Contributors: littlebizzy
+Donate link: https://www.patreon.com/littlebizzy
 Tags: disable empty trash, disable, empty, trash, can, bin, automatic, emptying, purge, purging
 Requires at least: 4.4
 Tested up to: 4.8
