@@ -7,8 +7,11 @@ Completely disables the automatic trash empty for WordPress posts, custom posts,
 
 ### Defined Constants
 
-    /* Plugin Meta */
+    /** Plugin Meta */
     define('DISABLE_NAG_NOTICES', true);
+    
+    /** Disable Empty Trash Functions */
+    define('DISABLE_EMPTY_TRASH', 'true'); // default = true
 
 ### Compatibility
 
