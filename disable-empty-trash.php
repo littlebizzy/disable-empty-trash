@@ -2,13 +2,27 @@
 /*
 Plugin Name: Disable Empty Trash
 Plugin URI: https://www.littlebizzy.com/plugins/disable-empty-trash
-Description: Completely disables the automatic trash empty for WordPress posts, custom posts, pages, and comments to avoid data loss and encourage manual emptying.
-Version: 1.0.0
+Description: Stops WordPress emptying trash
+Version: 1.1.0
 Author: LittleBizzy
 Author URI: https://www.littlebizzy.com
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
+GitHub Plugin URI: littlebizzy/disable-empty-trash
+Primary Branch: master
+Prefix: DETTRS
 */
+
+// disable wordpress.org updates
+add_filter(
+	'gu_override_dot_org',
+	function ( $overrides ) {
+		return array_merge(
+			$overrides,
+			array( 'disable-empty-trash/disable-empty-trash.php' )
+		);
+	}
+);
 
 
 /**
