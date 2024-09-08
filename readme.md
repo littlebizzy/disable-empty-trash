@@ -4,6 +4,9 @@ Stops WordPress emptying trash
 
 ## Changelog
 
+### 2.0.1
+- fix `gu_override_dot_org` snippet
+
 ### 2.0.0
 - code totally refactored to WordPress standards
 - supports PHP 7.0 to PHP 8.3
