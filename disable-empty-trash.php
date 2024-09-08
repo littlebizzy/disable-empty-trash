@@ -3,7 +3,7 @@
 Plugin Name: Disable Empty Trash
 Plugin URI: https://www.littlebizzy.com/plugins/disable-empty-trash
 Description: Stops WordPress emptying trash
-Version: 2.0.0
+Version: 2.0.1
 Author: LittleBizzy
 Author URI: https://www.littlebizzy.com
 License: GPL3
@@ -15,7 +15,7 @@ Prefix: DETTRS
 
 // Disable WordPress.org updates for this plugin
 add_filter('gu_override_dot_org', function ($overrides) {
-    $overrides['disable-empty-trash/disable-empty-trash.php'] = true;
+    $overrides[] = 'disable-empty-trash/disable-empty-trash.php';
     return $overrides;
 });
 
