@@ -4,8 +4,14 @@ Stops WordPress emptying trash
 
 ## Changelog
 
+### 2.0.3
+- improved function efficiency by preventing redundant execution
+- added `Tested up to` header
+- added `Update URI` header
+- added `Text Domain` header
+
 ### 2.0.2
-- added `Requires PHP` plugin header
+- added `Requires PHP` header
 - added "prevent direct access" snippet
 - improved `gu_override_dot_org` snippet
 
