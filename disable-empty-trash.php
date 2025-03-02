@@ -42,5 +42,5 @@ function disable_empty_trash() {
 // hook to init with high priority
 add_action( 'init', 'disable_empty_trash', -999 );
 
-
 // Ref: ChatGPT
+// Ref: using define( 'EMPTY_TRASH_DAYS', 0 ); in wp-config.php is a better approach when possible
