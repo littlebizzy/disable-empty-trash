@@ -3,7 +3,7 @@
 Plugin Name: Disable Empty Trash
 Plugin URI: https://www.littlebizzy.com/plugins/disable-empty-trash
 Description: Stops WordPress emptying trash
-Version: 3.0.0
+Version: 2.0.3
 Requires PHP: 7.0
 Tested up to: 6.7
 Author: LittleBizzy
@@ -29,7 +29,14 @@ add_filter( 'gu_override_dot_org', function( $overrides ) {
 
 // disable automatic trash emptying
 function disable_empty_trash() {
-    add_filter( 'wp_scheduled_delete', '__return_false' );
+    static $disabled = false;
+    if ( $disabled ) {
+        return;
+    }
+    $disabled = true;
+    
+    // remove scheduled trash deletion
+    remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
 }
 
 // hook to init with high priority
