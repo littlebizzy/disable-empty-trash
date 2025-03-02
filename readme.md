@@ -4,11 +4,11 @@ Stops WordPress emptying trash
 
 ## Changelog
 
-### 3.0.0
-- replaced `remove_action()` with `add_filter('__return_false')` for more robust solution
+### 2.0.3
 - added `Tested up to` header
 - added `Update URI` header
 - added `Text Domain` header
+- minor code optimization
 
 ### 2.0.2
 - added `Requires PHP` header
