@@ -29,13 +29,6 @@ add_filter( 'gu_override_dot_org', function( $overrides ) {
 
 // disable automatic trash emptying
 function disable_empty_trash() {
-    static $disabled = false;
-    if ( $disabled ) {
-        return;
-    }
-    $disabled = true;
-    
-    // remove scheduled trash deletion
     remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
 }
 
