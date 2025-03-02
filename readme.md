@@ -4,8 +4,8 @@ Stops WordPress emptying trash
 
 ## Changelog
 
-### 2.0.3
-- improved function efficiency by preventing redundant execution
+### 3.0.0
+- replaced `remove_action()` with `add_filter('__return_false')` for more robust solution
 - added `Tested up to` header
 - added `Update URI` header
 - added `Text Domain` header
