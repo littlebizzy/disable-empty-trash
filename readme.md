@@ -4,6 +4,13 @@ Stops WordPress emptying trash
 
 ## Changelog
 
+### 2.1.0
+- added trash retention enforcement via `empty_trash_days` to prevent expiry
+- added Multisite support using `pre_site_option_empty_trash_days`
+- retained scheduler unhooking for extra protection against automatic cleanup
+- refactored functions for clearer separation of policy vs. scheduler logic
+- `Tested up to:` bumped to 6.9
+
 ### 2.0.3
 - added `Tested up to` header
 - added `Update URI` header
