@@ -2,6 +2,16 @@
 
 Stops WordPress emptying trash
 
+## Description
+
+Disable Empty Trash prevents WordPress from automatically and permanently deleting content from the Trash.
+
+WordPress normally removes trashed posts, pages, custom post types, and comments after the retention period set by `EMPTY_TRASH_DAYS`. This can lead to accidental data loss when older trashed content is still needed for review or recovery.
+
+The plugin does not define or modify `EMPTY_TRASH_DAYS`. Instead, it removes WordPress core’s scheduled `wp_scheduled_delete` callback during early `init`, so automatic trash cleanup remains disabled whether the site uses WordPress’s default retention period or defines a custom value in `wp-config.php`.
+
+The standard WordPress Trash interface continues to work normally, including moving content to the Trash, restoring it, and permanently deleting it manually, without adding settings or changing database values.
+
 ## Changelog
 
 ### 2.2.0
