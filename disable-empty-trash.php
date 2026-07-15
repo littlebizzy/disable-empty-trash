@@ -3,7 +3,7 @@
 Plugin Name: Disable Empty Trash
 Plugin URI: https://www.littlebizzy.com/plugins/disable-empty-trash
 Description: Stops WordPress emptying trash
-Version: 2.1.0
+Version: 2.1.1
 Requires PHP: 7.0
 Tested up to: 6.9
 Author: LittleBizzy
@@ -27,19 +27,8 @@ add_filter( 'gu_override_dot_org', function( $overrides ) {
     return $overrides;
 }, 999 );
 
-// return 100 years for plugins or custom code reading the single-site option
-add_filter( 'pre_option_empty_trash_days', 'disable_empty_trash_days' );
-
-// return 100 years for plugins or custom code reading the Multisite option
-add_filter( 'pre_site_option_empty_trash_days', 'disable_empty_trash_days' );
-
-// WordPress core uses EMPTY_TRASH_DAYS instead of either option above
-function disable_empty_trash_days() {
-    return 36500;
-}
-
-// disable core cleanup without trying to redefine EMPTY_TRASH_DAYS after wp-config.php loads
-// this works when the constant is custom-defined (such as SlickStack) or left at the WordPress default
+// disable WordPress core automatic trash cleanup regardless of EMPTY_TRASH_DAYS
+// works with custom wp-config.php values (such as SlickStack) or the WordPress default
 // manual Empty Trash actions remain available
 function disable_empty_trash_scheduler() {
     remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
