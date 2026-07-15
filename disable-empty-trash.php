@@ -27,23 +27,22 @@ add_filter( 'gu_override_dot_org', function( $overrides ) {
     return $overrides;
 }, 999 );
 
-// force trash retention to a very high value (single site)
+// compatibility fallback for code reading the single-site retention option
 add_filter( 'pre_option_empty_trash_days', 'disable_empty_trash_days' );
 
-// force trash retention to a very high value (multisite)
+// compatibility fallback for code reading the Multisite retention option
 add_filter( 'pre_site_option_empty_trash_days', 'disable_empty_trash_days' );
 
-// force trash retention to a very high value
+// retain trashed content for 100 years when either compatibility option is queried
 function disable_empty_trash_days() {
     return 36500;
 }
 
-// disable scheduled trash cleanup
+// authoritative core protection for both single-site and Multisite installations
+// manual Empty Trash actions remain available because only automatic cleanup is unhooked
 function disable_empty_trash_scheduler() {
     remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
 }
 
-// hook early with high priority
+// run before WordPress starts its normal cron check on init
 add_action( 'init', 'disable_empty_trash_scheduler', -999 );
-
-// Ref: ChatGPT
