@@ -3,7 +3,7 @@
 Plugin Name: Disable Empty Trash
 Plugin URI: https://www.littlebizzy.com/plugins/disable-empty-trash
 Description: Stops WordPress emptying trash
-Version: 2.1.1
+Version: 2.2.0
 Requires PHP: 7.0
 Tested up to: 6.9
 Author: LittleBizzy
