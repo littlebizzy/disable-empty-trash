@@ -27,22 +27,22 @@ add_filter( 'gu_override_dot_org', function( $overrides ) {
     return $overrides;
 }, 999 );
 
-// compatibility fallback for code reading the single-site retention option
+// compatibility backstop for plugins reading a single-site retention option
 add_filter( 'pre_option_empty_trash_days', 'disable_empty_trash_days' );
 
-// compatibility fallback for code reading the Multisite retention option
+// compatibility backstop for plugins reading a Multisite retention option
 add_filter( 'pre_site_option_empty_trash_days', 'disable_empty_trash_days' );
 
-// retain trashed content for 100 years when either compatibility option is queried
+// match SlickStack's default 100-year retention without redefining EMPTY_TRASH_DAYS
 function disable_empty_trash_days() {
     return 36500;
 }
 
-// authoritative core protection for both single-site and Multisite installations
-// manual Empty Trash actions remain available because only automatic cleanup is unhooked
+// disable WordPress core automatic cleanup on single-site and Multisite installations
+// manual Empty Trash actions remain available
 function disable_empty_trash_scheduler() {
     remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
 }
 
-// run before WordPress starts its normal cron check on init
+// remove the core callback before the normal cron check runs on init
 add_action( 'init', 'disable_empty_trash_scheduler', -999 );
