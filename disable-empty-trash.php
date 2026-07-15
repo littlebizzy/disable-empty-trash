@@ -27,18 +27,19 @@ add_filter( 'gu_override_dot_org', function( $overrides ) {
     return $overrides;
 }, 999 );
 
-// compatibility backstop for plugins reading a single-site retention option
+// return 100 years for plugins or custom code reading the single-site option
 add_filter( 'pre_option_empty_trash_days', 'disable_empty_trash_days' );
 
-// compatibility backstop for plugins reading a Multisite retention option
+// return 100 years for plugins or custom code reading the Multisite option
 add_filter( 'pre_site_option_empty_trash_days', 'disable_empty_trash_days' );
 
-// match SlickStack's default 100-year retention without redefining EMPTY_TRASH_DAYS
+// WordPress core uses EMPTY_TRASH_DAYS instead of either option above
 function disable_empty_trash_days() {
     return 36500;
 }
 
-// disable WordPress core automatic cleanup on single-site and Multisite installations
+// disable core cleanup without trying to redefine EMPTY_TRASH_DAYS after wp-config.php loads
+// this works when the constant is custom-defined (such as SlickStack) or left at the WordPress default
 // manual Empty Trash actions remain available
 function disable_empty_trash_scheduler() {
     remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
