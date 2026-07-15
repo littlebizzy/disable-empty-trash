@@ -6,8 +6,8 @@ Stops WordPress emptying trash
 
 ### 2.2.0
 - removed speculative `empty_trash_days` option filters because WordPress core never queries those options; they could only affect arbitrary third-party code and were not based on a real compatibility requirement
-- kept the early `init` hook that runs `disable_empty_trash_scheduler()`
 - kept removal of WordPress core's `wp_scheduled_delete` callback, which disables automatic trash cleanup regardless of the `EMPTY_TRASH_DAYS` value
+- kept the early `init` hook that runs `disable_empty_trash_scheduler()`
 - cleaned up inline code comments for clarity
 - `Tested up to:` bumped to 7.0
 
